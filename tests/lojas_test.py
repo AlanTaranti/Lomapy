@@ -13,9 +13,13 @@ source_id = os.environ.get("LOMAPY_SOURCE_ID")
 lomapy.autenticar(app_token, source_id)
 
 
-def test_obter_todas():
-    resposta = lomapy.lojas.obter_todas()
-
+def validar_resposta(resposta):
     assert type(resposta) is dict
     assert resposta["requestInfo"]["status"] == "OK"
     assert type(resposta["stores"]) is list
+
+
+def test_obter_todas():
+    resposta = lomapy.lojas.obter_todas()
+
+    validar_resposta(resposta)
