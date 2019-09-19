@@ -18,13 +18,13 @@ def obter_por_categoria(categoria_id: int, loja_id: int = None, quantidade: int 
     :param loja_id: ID de loja. Utilize esse parâmetro para filtrar ofertas de uma determinada loja
     :type loja_id: int, optional
 
-    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber, defaults to 12
+    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber. Padrão: 12
     :type quantidade: int, optional
 
-    :param pagina: Página desejada, defaults to 1
+    :param pagina: Página desejada. Padrão: 1
     :type pagina: int, optional
 
-    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço), defaults to rating
+    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço). Padrão: rating
     :type pagina: str, optional
 
     :return: Ofertas
@@ -86,13 +86,13 @@ def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, qu
     :param loja_id: ID de loja. Utilize esse parâmetro para filtrar ofertas de uma determinada loja
     :type loja_id: int, optional
 
-    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber, defaults to 12
+    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber. Padrão: 12
     :type quantidade: int, optional
 
-    :param pagina: Página desejada, defaults to 1
+    :param pagina: Página desejada. Padrão: 1
     :type pagina: int, optional
 
-    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço), defaults to rating
+    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço). Padrão: rating
     :type pagina: str, optional
 
     :return: Ofertas
@@ -136,13 +136,13 @@ def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = Non
     :param categoria_id: ID de categoria. Utilize esse parâmetro para filtrar ofertas de uma determinada categoria
     :type categoria_id: int, optional
 
-    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber, defaults to 12
+    :param quantidade: Quantidade de ofertas. Com este parâmetro você poderá definir o número de ofertas que deseja receber. Padrão: 12
     :type quantidade: int, optional
 
-    :param pagina: Página desejada, defaults to 1
+    :param pagina: Página desejada. Padrão: 1
     :type pagina: int, optional
 
-    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço), defaults to rating
+    :param ordenacao: Ordenação dos resultados. Opções: rating (Ordena por melhor avaliação) e price (Ordena por menor preço). Padrão: rating
     :type pagina: str, optional
 
     :return: Ofertas
