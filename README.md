@@ -11,7 +11,8 @@ O Lomapy é compatível com versão 3 da API da Lomadee.
 ## Como instalar e utilizar esse projeto? 
 
 ### Instalação
-- Documentação pendente
+    
+    $ pip install lomapy
 
 ### Utilização
 
