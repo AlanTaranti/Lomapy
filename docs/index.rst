@@ -1,20 +1,38 @@
-.. Lomapy documentation master file, created by
-   sphinx-quickstart on Thu Sep 19 12:21:41 2019.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. _topics-index:
 
-Welcome to Lomapy's documentation!
-==================================
+=============================
+Lomapy |release| Documentação
+=============================
+
+Lomapy é uma biblioteca **não oficial** que disponibiliza um interface em python para a API de Afiliados do Lomadee.
+O Lomapy é compatível com versão 3 da API da Lomadee.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Lomapy
+   :hidden:
+
+Instalação
+==========
+
+O Lomapy roda em Python 3.4 ou superior.
+
+Para instalar o Lomapy com o pip::
+
+   pip install lomapy
 
 
+Como utilizar
+=============
 
-Indices and tables
-==================
+- Em Breve...
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+
+Contribua
+=========
+
+- `Rastreador de Problemas`_
+- `Código Fonte`_
+
+.. _Rastreador de Problemas: https://github.com/AlanTaranti/Lomapy/issues
+.. _Código Fonte: https://github.com/AlanTaranti/Lomapy
