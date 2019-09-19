@@ -2,3 +2,6 @@ pytest
 pytest-cov
 tox
 python-dotenv
+sphinx
+sphinx-rtd-theme
+twine
