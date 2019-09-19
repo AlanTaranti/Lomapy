@@ -2,11 +2,11 @@
 from setuptools import setup, find_packages
 from lomapy.recursos.sdk import sdk
 
-__description__ = 'Lomapy'
-__long_description__ = 'Biblioteca Python para API do Lomadee'
+descricao = 'Lomapy'
+descricao_longa = 'Biblioteca Python para API do Lomadee'
 
-__author__ = 'Alan Taranti'
-__author_email__ = 'alan.taranti@gmail.com'
+autor = 'Alan Taranti'
+autor_email = 'alan.taranti@gmail.com'
 
 
 testing_extras = [
@@ -18,12 +18,12 @@ testing_extras = [
 setup(
     name='lomapy',
     version=sdk.VERSAO,
-    author=__author__,
-    author_email=__author_email__,
+    author=autor,
+    author_email=autor_email,
     packages=find_packages(),
     license='MIT',
-    description=__description__,
-    long_description=__long_description__,
+    description=descricao,
+    long_description=descricao_longa,
     url='https://github.com/AlanTaranti/Lomapy',
     keywords='lomapy, lomadee',
     include_package_data=True,
