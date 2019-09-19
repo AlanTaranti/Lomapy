@@ -55,7 +55,7 @@ def autenticar(app_token: str, source_id: str, caixa_de_areia: bool = True):
     :param source_id: SOURCE_ID da Lomadee
     :type source_id: str
 
-    :param caixa_de_areia: Define se o ambiente é o caixa de areia, defaults to True
+    :param caixa_de_areia: Define se o ambiente é o caixa de areia. Padrão: True
     :type caixa_de_areia: bool
     """
     global PARAMETROS_GLOBAIS

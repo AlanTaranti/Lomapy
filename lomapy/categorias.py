@@ -20,7 +20,7 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
     :param possui_oferta: Quando "true" retorna apenas categorias que possuem ofertas.
     :type possui_oferta: bool, optional
 
-    :param quantidade: Quantidade de categorias. Com este parâmetro você poderá definir o número de categorias que deseja receber, defaults to 12
+    :param quantidade: Quantidade de categorias. Com este parâmetro você poderá definir o número de categorias que deseja receber. Padrão: 12
     :type quantidade: int, optional
 
     :return: Categorias
