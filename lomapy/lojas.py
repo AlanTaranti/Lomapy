@@ -9,6 +9,7 @@ from lomapy.recursos.rotas import rotas_loja
 
 def obter_todas(categoria_id: int = None, possui_oferta: bool = None) -> dict:
     """
+    Lista os parceiros e lojistas da Lomadee
 
     :param categoria_id: ID de categoria. Utilize esse parâmetro para filtrar lojas que possuem ofertas de uma determinada categoria
     :type categoria_id: int, optional
