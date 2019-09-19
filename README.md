@@ -3,6 +3,7 @@
 [![Version](https://img.shields.io/pypi/v/lomapy.svg?style=flat)](https://pypi.python.org/pypi/lomapy)
 [![Python Version](https://img.shields.io/pypi/pyversions/lomapy?style=flat)](https://pypi.python.org/pypi/lomapy)
 [![License](https://img.shields.io/github/license/AlanTaranti/Lomapy)](LICENSE)
+[![Documentação](https://readthedocs.org/projects/lomapy/badge/?version=latest)](https://lomapy.readthedocs.io/en/latest/?badge=latest)
 
 ## O que é esse o projeto?
 
