@@ -3,7 +3,9 @@ from setuptools import setup, find_packages
 from lomapy.recursos.sdk import sdk
 
 descricao = 'Lomapy'
-descricao_longa = 'Biblioteca Python para API do Lomadee'
+
+with open("README.md") as f:
+    descricao_longa = f.read()
 
 autor = 'Alan Taranti'
 autor_email = 'alan.taranti@gmail.com'
@@ -24,6 +26,7 @@ setup(
     license='MIT',
     description=descricao,
     long_description=descricao_longa,
+    long_description_content_type='text/markdown',
     url='https://github.com/AlanTaranti/Lomapy',
     keywords='lomapy, lomadee',
     include_package_data=True,
