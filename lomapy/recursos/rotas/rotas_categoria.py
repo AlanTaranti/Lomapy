@@ -1,0 +1,7 @@
+ENDPOINT_BASE = "/category"
+
+BUSCAR = ENDPOINT_BASE + "/_search"
+
+OBTER_POR_ID = ENDPOINT_BASE + "/_id/{}"
+
+OBTER_TODAS = ENDPOINT_BASE + "/_all"

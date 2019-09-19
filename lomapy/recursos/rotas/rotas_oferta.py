@@ -1,0 +1,9 @@
+ENDPOINT_BASE = "/offer"
+
+OBTER_POR_CATEGORIA = ENDPOINT_BASE + "/_category/{}"
+
+OBTER_POR_ID = ENDPOINT_BASE + "/_id/{}"
+
+BUSCAR = ENDPOINT_BASE + "/_search"
+
+OBTER_POR_LOJA = ENDPOINT_BASE + "/_store/{}"
