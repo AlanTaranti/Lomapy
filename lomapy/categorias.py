@@ -33,10 +33,10 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
     if loja_id is not None:
         parametros["storeId"] = loja_id
 
-    if possui_oferta:
+    if possui_oferta is not None:
         parametros["hasOffer"] = possui_oferta
 
-    if quantidade:
+    if quantidade is not None:
         parametros["size"] = quantidade
 
     endpoint = rotas_categoria.BUSCAR
@@ -62,7 +62,7 @@ def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
     if loja_id is not None:
         parametros["storeId"] = loja_id
 
-    if possui_oferta:
+    if possui_oferta is not None:
         parametros["hasOffer"] = possui_oferta
 
     endpoint = rotas_categoria.OBTER_TODAS
