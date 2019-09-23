@@ -39,5 +39,5 @@ Copie o arquivo ".env.exemplo" para ".env" e edite as variáveis de ambientes re
     $ cp .env.exemplo .env
     
 ## 4 - Executar os testes
-    $ pyenv local 3.5.7 3.6.9
+    $ pyenv local 3.5.7 3.6.9 3.7.4
     $ tox
