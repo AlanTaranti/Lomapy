@@ -5,7 +5,7 @@ Segue algumas instruções para te orientar a inicializar o projeto.
 
 ### Como inicializar o projeto?
 
-1. Primeiramente, tenha certeza que você tenhas os requisitos abaixos atendidos:
+1. Primeiramente, tenha certeza que você tenhas os requisitos abaixo atendidos:
 - Git
 - Python 3.5+
 - Windows, Linux ou Mac
