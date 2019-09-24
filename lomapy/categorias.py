@@ -2,7 +2,7 @@
 .. module:: Categorias
    :synopsis: Interage com as categorias do Lomadee.
 """
-
+from lomapy.helpers import padronizar_resposta_categoria
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_categoria
 
@@ -64,7 +64,8 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
 
     endpoint = rotas_categoria.BUSCAR
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_categoria(resposta)
 
 
 def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
@@ -114,7 +115,8 @@ def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
 
     endpoint = rotas_categoria.OBTER_TODAS
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_categoria(resposta)
 
 
 def obter_por_id(categoria_id: int, loja_id: int = None) -> dict:
@@ -157,4 +159,5 @@ def obter_por_id(categoria_id: int, loja_id: int = None) -> dict:
 
     endpoint = rotas_categoria.OBTER_POR_ID.format(categoria_id)
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_categoria(resposta)

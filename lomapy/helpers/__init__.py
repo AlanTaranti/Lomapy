@@ -1,0 +1,1 @@
+from .padronizar_resposta import padronizar_resposta_categoria
