@@ -38,16 +38,28 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
     >>> lomapy.autenticar(app_token, source_id)
     >>> resposta = lomapy.categorias.buscar("info", quantidade=2)
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'categories': [{'hasOffer': 493,
-                     'id': 2,
-                     'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/2?sourceId=MEU_SOURCE_ID',
-                     'name': 'Informática'},
-                    {'hasOffer': 325,
-                     'id': 7074,
-                     'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/7074?sourceId=MEU_SOURCE_ID',
-                     'name': 'Acessórios para Informática'}],
-     'pagination': {'page': 1, 'size': 2, 'totalPage': 1, 'totalSize': 2},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'categorias': [
+            {
+                'id': 2,
+                'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/2?sourceId=MEU_SOURCE_ID',
+                'nome': 'Informática',
+                'quantidade_ofertas': 493
+            },
+            {
+                'id': 7074,
+                'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/7074?sourceId=MEU_SOURCE_ID',
+                'nome': 'Acessórios para Informática',
+                'quantidade_ofertas': 325
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 2,
+            'total_paginas': 1,
+            'total_quantidade': 2
+        }
+    }
     """
     parametros = {
         "keyword": palavra_chave,
@@ -94,16 +106,28 @@ def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
     >>> resposta = lomapy.categorias.obter_todas()
     >>> # Atenção: Mostrado apenas duas categorias, por questão de espaço
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'categories': [{'hasOffer': 522904,
-                     'id': 0,
-                     'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
-                     'name': 'Geral'},
-                    {'hasOffer': 18634,
-                     'id': 10897,
-                     'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/10897?sourceId=MEU_SOURCE_ID',
-                     'name': 'Vestido Feminino Plus Size'}],
-     'pagination': {'page': 1, 'size': 5957, 'totalPage': 1, 'totalSize': 5957},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'categorias': [
+            {
+                'id': 0,
+                'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                'nome': 'Geral',
+                'quantidade_ofertas': 489692
+            },
+            {
+                'id': 10897,
+                'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/10897?sourceId=MEU_SOURCE_ID',
+                'nome': 'Vestido Feminino Plus Size',
+                'quantidade_ofertas': 12470
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 5957,
+            'total_paginas': 1,
+            'total_quantidade': 5957
+        }
+    }
     """
     parametros = {}
 
@@ -145,12 +169,22 @@ def obter_por_id(categoria_id: int, loja_id: int = None) -> dict:
     >>> categoria = lomapy.categorias.obter_todas()["categories"][0]
     >>> resposta = lomapy.categorias.obter_por_id(categoria["id"])
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'categories': [{'hasOffer': 522904,
-                     'id': 0,
-                     'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
-                     'name': 'Geral'}],
-     'pagination': {'page': 1, 'size': 1, 'totalPage': 1, 'totalSize': 1},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'categorias': [
+            {
+                'id': 0,
+                'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                'nome': 'Geral',
+                'quantidade_ofertas': 489692
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 1,
+            'total_paginas': 1,
+            'total_quantidade': 1
+        }
+    }
     """
     parametros = {}
 
