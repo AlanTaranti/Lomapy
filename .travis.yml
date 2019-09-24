@@ -10,3 +10,8 @@ install:
   - pip install -r requirements-dev.txt
 script:
   - py.test
+deploy:
+  provider: pypi
+  user: taranti
+  password:
+    secure: qBS3zgF2SSwcnPdhPVf/GJsQKiYUuSLPBQ5f3RGasfamfazP4quASRA0A92LM2ccMv8LB8d6/393snJwSef/CbGTWLt2w60bahUWL8vDHHJanu3ndJhKUvoYjbHB/r1sbSKUVFi4ixYq4VjW+8mCXFrd0ptw9znkeiU9W0+2+1iK4bGs9cPos5+zzXgjir5aj+8Hy1y+VXU1HqXDtOi/WMXsIxM6ZjQsH77YJkIZ3td4+wwP7gC/gqz7EWPmCdd2ZtlRCJea9zrrrEUGv3vXo1ALmf+dwvmkutG7pfE/E/5nYtbKEB3NuTMo7bREG+npxAFHbDI1wovmSEghMvDoYw+axT/U52hvKe01kzCVkF6LY+cezKzLaxGhYrFrPrYaE8Gx7W6g5ec+UFkeNNeufFJiau4AfuruyRUgCvqENXyqODUt8zx8hxK/8Ypa/VLyTt/LAm56rLR5LQEaKTC0urOb0enuy+QCjiq4cOo6xF0GBl5rebUAdef1VMYUlNoP74MuIagIN45ZyxEXMHhmMA+zmszb+TN2fWvd+YhYMD7MpArVTDTJWCpAkFFYTd11LmETs7fzeR52JyGyxrOU3kJyPF91Lo25p27Wbkpj3wpO/ugvnPlmp4I4s8qbLaa2u80UssIKOJtETB9U8ghtH4B5IJ8yLA9DXWT9ZnsXgVY=
