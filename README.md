@@ -12,7 +12,7 @@ O Lomapy é compatível com versão 3 da API da Lomadee.
 
 ## Requisitos
 
-- Python 3.4+
+- Python 3.5+
 - Linux, Windows, Mac OSX ou BSD
 
 ## Como instalar e utilizar esse projeto? 
