@@ -2,6 +2,7 @@
 .. module:: Manipulador de Requisições
    :synopsis: Gerencia as requisições para a API da Lomadee
 """
+from json import JSONDecodeError
 
 import requests
 from lomapy.recursos.sdk import sdk
@@ -96,11 +97,17 @@ def erro(resposta: requests.Response):
 
     :raises Exception: Falha na requisição
     """
-    raise Exception({
+    dados = {
         "codigo": resposta.status_code,
         "motivo": resposta.reason,
-        "resposta": resposta.json()
-    })
+        "resposta": None
+    }
+    try:
+        dados["resposta"] = resposta.json()
+    except JSONDecodeError:
+        pass
+
+    raise Exception(dados)
 
 
 def cabecalhos() -> dict:

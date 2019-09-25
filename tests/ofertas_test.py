@@ -16,12 +16,12 @@ lomapy.autenticar(app_token, source_id)
 
 def validar_resposta(resposta):
     assert type(resposta) is dict
-    assert resposta["requestInfo"]["status"] == "OK"
-    assert type(resposta["offers"]) is list
+    assert type(resposta["ofertas"]) is list
+    assert len(resposta["ofertas"]) == resposta["paginacao"]["quantidade"]
 
 
 def test_buscar():
-    categoria = lomapy.categorias.obter_todas()["categories"][0]
+    categoria = lomapy.categorias.obter_todas()["categorias"][0]
 
     resposta = lomapy.ofertas.buscar(palavra_chave="info", categoria_id=categoria["id"])
 
@@ -29,7 +29,7 @@ def test_buscar():
 
 
 def test_obter_por_categoria():
-    categoria = lomapy.categorias.obter_todas()["categories"][0]
+    categoria = lomapy.categorias.obter_todas()["categorias"][0]
     resposta = lomapy.ofertas.obter_por_categoria(categoria["id"])
 
     validar_resposta(resposta)

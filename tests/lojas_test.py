@@ -15,8 +15,8 @@ lomapy.autenticar(app_token, source_id)
 
 def validacao_padrao(resposta):
     assert type(resposta) is dict
-    assert resposta["requestInfo"]["status"] == "OK"
-    assert type(resposta["stores"]) is list
+    assert type(resposta["lojas"]) is list
+    assert len(resposta["lojas"]) == resposta["paginacao"]["quantidade"]
 
 
 def test_obter_todas():
@@ -26,7 +26,7 @@ def test_obter_todas():
 
 
 def test_obter_todas_por_categoria():
-    categoria = lomapy.categorias.obter_todas()["categories"][0]
+    categoria = lomapy.categorias.obter_todas()["categorias"][0]
 
     resposta = lomapy.lojas.obter_todas(categoria_id=categoria["id"])
 
@@ -37,9 +37,9 @@ def test_obter_todas_por_possuir_oferta():
 
     resposta = lomapy.lojas.obter_todas(possui_oferta=True)
     validacao_padrao(resposta)
-    assert resposta["stores"][0]["hasOffer"] > 0
+    assert resposta["lojas"][0]["quantidade_ofertas"] > 0
 
     resposta = lomapy.lojas.obter_todas(possui_oferta=False)
     validacao_padrao(resposta)
-    assert resposta["stores"][0]["hasOffer"] == 0
+    assert resposta["lojas"][0]["quantidade_ofertas"] == 0
 
