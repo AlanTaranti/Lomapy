@@ -1,6 +1,6 @@
 from typing import List
 
-from lomapy.modelos import Categoria, Loja
+from lomapy.modelos import Categoria, Loja, Oferta
 
 
 def _padronizar_paginacao(paginacao_nao_padronizada):
@@ -24,6 +24,12 @@ def _padronizar_loja(loja_nao_padronizada) -> dict:
     return loja.para_dict()
 
 
+def _padronizar_oferta(oferta_nao_padronizada) -> dict:
+    oferta = Oferta()
+    oferta.construir(oferta_nao_padronizada)
+    return oferta.para_dict()
+
+
 def _padronizar_categorias(lista_categorias_nao_padronizadas) -> List[dict]:
     categorias = []
     for c in lista_categorias_nao_padronizadas:
@@ -38,6 +44,13 @@ def _padronizar_lojas(lista_lojas_nao_padronizadas) -> List[dict]:
     return lojas
 
 
+def _padronizar_ofertas(lista_ofertas_nao_padronizadas) -> List[dict]:
+    ofertas = []
+    for o in lista_ofertas_nao_padronizadas:
+        ofertas.append(_padronizar_loja(o))
+    return ofertas
+
+
 def padronizar_resposta_categoria(resposta) -> dict:
     return {
         "categorias": _padronizar_categorias(resposta["categories"]),
@@ -48,5 +61,12 @@ def padronizar_resposta_categoria(resposta) -> dict:
 def padronizar_resposta_loja(resposta) -> dict:
     return {
         "lojas": _padronizar_lojas(resposta["stores"]),
+        "paginacao": _padronizar_paginacao(resposta["pagination"])
+    }
+
+
+def padronizar_resposta_oferta(resposta) -> dict:
+    return {
+        "ofertas": _padronizar_ofertas(resposta["offers"]),
         "paginacao": _padronizar_paginacao(resposta["pagination"])
     }
