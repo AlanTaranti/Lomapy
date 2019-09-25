@@ -47,7 +47,7 @@ def _padronizar_lojas(lista_lojas_nao_padronizadas) -> List[dict]:
 def _padronizar_ofertas(lista_ofertas_nao_padronizadas) -> List[dict]:
     ofertas = []
     for o in lista_ofertas_nao_padronizadas:
-        ofertas.append(_padronizar_loja(o))
+        ofertas.append(_padronizar_oferta(o))
     return ofertas
 
 
