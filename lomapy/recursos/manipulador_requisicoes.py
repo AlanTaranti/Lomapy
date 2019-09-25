@@ -99,7 +99,7 @@ def erro(resposta: requests.Response):
     raise Exception({
         "codigo": resposta.status_code,
         "motivo": resposta.reason,
-        "resposta": resposta.json()
+        "resposta": resposta.json()["requestInfo"]["message"]
     })
 
 
