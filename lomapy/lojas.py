@@ -33,32 +33,53 @@ def obter_todas(categoria_id: int = None, possui_oferta: bool = None) -> dict:
     >>> resposta = lomapy.lojas.obter_todas()
     >>> # Atenção: Mostrado apenas duas lojas, por questão de espaço
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'pagination': {'page': 1, 'size': 178, 'totalPage': 1, 'totalSize': 178},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'},
-     'stores': [{'events': [{'commission': 0.064,
-                             'event': 'Vendas - Hang Loose',
-                             'eventType': 'Sale',
-                             'fixedCommission': False}],
-                 'hasOffer': 0,
-                 'id': 5695,
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'maxCommission': 6.4,
-                 'name': 'Hang Loose',
-                 'thumbnail': 'https://www.lomadee.com/programas/BR/5695/logo_115x76.png'},
-                {'events': [{'commission': 0.0354,
-                             'event': 'Cozinha, Ar condicionado, Ferramentas',
-                             'eventType': 'Sale',
-                             'fixedCommission': False},
-                            {'commission': 0.0354,
-                             'event': 'Casa e Móveis',
-                             'eventType': 'Sale',
-                             'fixedCommission': False}],
-                 'hasOffer': 0,
-                 'id': 5800,
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'maxCommission': 3.54,
-                 'name': 'Mega Mamute',
-                 'thumbnail': 'https://www.lomadee.com/vitrine/logo590367.gif'}]}
+    {
+        'lojas': [
+            {
+                'comissao_maxima': 6.4,
+                'eventos': [
+                    {
+                        'comissao': 0.064,
+                        'ehComissaoFixa': False,
+                        'nome': 'Vendas - Hang Loose',
+                        'tipo': 'Sale'
+                    }
+                ],
+                'id': 5695,
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'nome': 'Hang Loose',
+                'quantidade_ofertas': 0,
+                'thumbnail': 'https://www.lomadee.com/programas/BR/5695/logo_115x76.png'},
+            {
+                'comissao_maxima': 3.54,
+                'eventos': [
+                    {
+                        'comissao': 0.0354,
+                        'ehComissaoFixa': False,
+                        'nome': 'Casa e Móveis',
+                        'tipo': 'Sale'
+                    },
+                    {
+                        'comissao': 0.0354,
+                        'ehComissaoFixa': False,
+                        'nome': 'Cozinha, Ar condicionado, Ferramentas',
+                        'tipo': 'Sale'
+                    }
+                ],
+                'id': 5800,
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'nome': 'Mega Mamute',
+                'quantidade_ofertas': 0,
+                'thumbnail': 'https://www.lomadee.com/vitrine/logo590367.gif'
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 178,
+            'total_paginas': 1,
+            'total_quantidade': 178
+        }
+    }
     """
     parametros = {}
 
