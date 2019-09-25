@@ -2,7 +2,7 @@
 .. module:: Lojas
    :synopsis: Interage com as lojas do Lomadee.
 """
-
+from lomapy.helpers.padronizar_resposta import padronizar_resposta_loja
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_loja
 
@@ -70,4 +70,5 @@ def obter_todas(categoria_id: int = None, possui_oferta: bool = None) -> dict:
 
     endpoint = rotas_loja.OBTER_TODAS
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_loja(resposta)
