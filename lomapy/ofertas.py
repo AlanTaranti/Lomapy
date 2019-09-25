@@ -2,7 +2,7 @@
 .. module:: Ofertas
    :synopsis: Interage com as ofertas do Lomadee.
 """
-
+from lomapy.helpers.padronizar_resposta import padronizar_resposta_oferta
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_oferta
 
@@ -41,38 +41,67 @@ def obter_por_categoria(categoria_id: int, loja_id: int = None, quantidade: int 
     >>> source_id = "MEU_SOURCE_ID"
     >>> lomapy.autenticar(app_token, source_id)
     >>> categoria = lomapy.categorias.obter_todas()["categories"][0]
-    >>> resposta = lomapy.ofertas.obter_por_categoria(categoria["id"])
+    >>> resposta = lomapy.ofertas.obter_por_categoria(categoria["id"], quantidade=2)
     >>> # Atenção: Mostrado apenas duas ofertas, por questão de espaço
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'offers': [{'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID'},
-                 'id': '000000000001000969',
-                 'installment': {'quantity': 12, 'value': 124.91},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Computador Stilo DS3558 Celeron Windows 10 Home '
-                         '18.5&#39;&#39; - Preto',
-                 'price': 1349.1,
-                 'priceFrom': 2229.0,
-                 'store': {'id': 6117,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Positivo',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/6117/imagemBox_80x60.png'},
-                 'thumbnail': 'https://loja.meupositivo.com.br/Assets/Produtos/Gigantes/111.jpg?v=1b9087fb-1'},
-                {'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID'},
-                 'id': '000000000001000974',
-                 'installment': {'quantity': 12, 'value': 108.25},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Computador Stilo DS3550 Celeron Windows 10 Home - Preto',
-                 'price': 1169.1,
-                 'priceFrom': 1799.0,
-                 'store': {'id': 6117,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Positivo',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/6117/imagemBox_80x60.png'},
-                 'thumbnail': 'https://loja.meupositivo.com.br/Assets/Produtos/Gigantes/DeskStilo_Angulo_400x400px.jpg?v=38f01386-1'}],
-     'pagination': {'page': 1, 'size': 12, 'totalPage': 40766, 'totalSize': 489187},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'ofertas': [
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '000000000001000969',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 6117,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Positivo',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/6117/imagemBox_80x60.png'
+                },
+                'nome': 'Computador Stilo DS3558 Celeron Windows 10 Home 18.5&#39;&#39; - Preto',
+                'parcelas': {'quantidade': 12, 'valor': 124.91},
+                'preco_atual': 1349.1,
+                'preco_original': 2229.0,
+                'thumbnail': 'https://loja.meupositivo.com.br/Assets/Produtos/Gigantes/111.jpg?v=1b9087fb-1'
+            },
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '000000000001000974',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 6117,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Positivo',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/6117/imagemBox_80x60.png'
+                },
+                'nome': 'Computador Stilo DS3550 Celeron Windows 10 Home - Preto',
+                'parcelas': {'quantidade': 12, 'valor': 108.25},
+                'preco_atual': 1169.1,
+                'preco_original': 1799.0,
+                'thumbnail': 'https://loja.meupositivo.com.br/Assets/Produtos/Gigantes/DeskStilo_Angulo_400x400px.jpg?v=38f01386-1'
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 2,
+            'total_paginas': 244664,
+            'total_quantidade': 489327
+        }
+    }
     """
     parametros = {}
 
@@ -90,7 +119,8 @@ def obter_por_categoria(categoria_id: int, loja_id: int = None, quantidade: int 
 
     endpoint = rotas_oferta.OBTER_POR_CATEGORIA.format(categoria_id)
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_oferta(resposta)
 
 
 def obter_por_id(oferta_id: int, loja_id: int) -> dict:
@@ -118,22 +148,40 @@ def obter_por_id(oferta_id: int, loja_id: int) -> dict:
     >>> lomapy.autenticar(app_token, source_id)
     >>> resposta = lomapy.ofertas.obter_por_id(oferta_id=100003411, loja_id=5632)
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'offers': [{'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
-                              'name': 'Geral'},
-                 'id': '100003411',
-                 'installment': {'quantity': 2, 'value': 87.87},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Caixa De Som Swarovski Bluetooth 15 Cristais Original',
-                 'price': 175.75,
-                 'priceFrom': 175.75,
-                 'store': {'id': 5632,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Americanas.com',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'},
-                 'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100003/4/100003410P1.jpg'}],
-     'pagination': {'page': 1, 'size': 1, 'totalPage': 1, 'totalSize': 1},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'ofertas': [
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': 'Geral',
+                    'quantidade_ofertas': None
+                },
+                'id': '100003411',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 5632,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Americanas.com',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'
+                },
+                'nome': 'Caixa De Som Swarovski Bluetooth 15 Cristais Original',
+                'parcelas': {'quantidade': 2, 'valor': 87.87},
+                'preco_atual': 175.75,
+                'preco_original': 175.75,
+                'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100003/4/100003410P1.jpg'
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 1,
+            'total_paginas': 1,
+            'total_quantidade': 1
+        }
+    }
     """
     parametros = {}
 
@@ -142,7 +190,8 @@ def obter_por_id(oferta_id: int, loja_id: int) -> dict:
 
     endpoint = rotas_oferta.OBTER_POR_ID.format(oferta_id)
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_oferta(resposta)
 
 
 def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, quantidade: int = None,
@@ -182,39 +231,72 @@ def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, qu
     >>> source_id = "MEU_SOURCE_ID"
     >>> lomapy.autenticar(app_token, source_id)
     >>> categoria = lomapy.categorias.obter_todas()["categories"][0]
-    >>> resposta = lomapy.ofertas.buscar(palavra_chave="mouse", categoria_id=categoria["id"])
-    >>> # Atenção: Mostrado apenas duas ofertas, por questão de espaço
+    >>> resposta = lomapy.ofertas.buscar(palavra_chave="mouse", categoria_id=categoria["id"], quantidade=2)
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'offers': [{'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID'},
-                 'id': '00053604',
-                 'installment': {'quantity': 1, 'value': 36.9},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Mouse Gamer Fortrek Black Hawk OM-703 7 Botões + Scroll '
-                         '– Preto/Azul',
-                 'price': 33.94,
-                 'priceFrom': 36.9,
-                 'store': {'id': 6064,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Rede Schumann',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/6064/imagemBox_80x60.png'},
-                 'thumbnail': 'http://d3alv7ekdacjys.cloudfront.net/Custom/Content/Products/10/69/1069594_mouse-gamer-fortrek-black-hawk-om-703-7-botoes-scroll-preto-azul_z1_637030130715854141'},
-                {'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID'},
-                 'id': '00053604-00053604',
-                 'installment': {'quantity': 1, 'value': 36.9},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Mouse Gamer Fortrek Black Hawk OM-703 7 Botões + Scroll '
-                         '– Preto/Azul',
-                 'price': 33.94,
-                 'priceFrom': 36.9,
-                 'store': {'id': 6064,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Rede Schumann',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/6064/imagemBox_80x60.png'},
-                 'thumbnail': 'http://d3alv7ekdacjys.cloudfront.net/Custom/Content/Products/10/69/1069594_mouse-gamer-fortrek-black-hawk-om-703-7-botoes-scroll-preto-azul_z1_637030130715854141'}],
-     'pagination': {'page': 1, 'size': 12, 'totalPage': 112, 'totalSize': 1343},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'ofertas': [
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '00053604',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 6064,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Rede Schumann',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/6064/imagemBox_80x60.png'
+                },
+                'nome': 'Mouse Gamer Fortrek Black Hawk OM-703 7 Botões + Scroll – Preto/Azul',
+                'parcelas': {
+                    'quantidade': 1,
+                    'valor': 36.9
+                },
+                'preco_atual': 33.94,
+                'preco_original': 36.9,
+                'thumbnail': 'http://d3alv7ekdacjys.cloudfront.net/Custom/Content/Products/10/69/1069594_mouse-gamer-fortrek-black-hawk-om-703-7-botoes-scroll-preto-azul_z1_637030130715854141'
+            },
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '00053604-00053604',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 6064,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Rede Schumann',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/6064/imagemBox_80x60.png'
+                },
+                'nome': 'Mouse Gamer Fortrek Black Hawk OM-703 7 Botões + Scroll – Preto/Azul',
+                'parcelas': {
+                    'quantidade': 1,
+                    'valor': 36.9
+                },
+                'preco_atual': 33.94,
+                'preco_original': 36.9,
+                'thumbnail': 'http://d3alv7ekdacjys.cloudfront.net/Custom/Content/Products/10/69/1069594_mouse-gamer-fortrek-black-hawk-om-703-7-botoes-scroll-preto-azul_z1_637030130715854141'
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 2,
+            'total_paginas': 679,
+            'total_quantidade': 1358
+        }
+    }
     """
     parametros = {
         "keyword": palavra_chave,
@@ -240,7 +322,8 @@ def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, qu
 
     endpoint = rotas_oferta.BUSCAR
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_oferta(resposta)
 
 
 def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = None, pagina: int = None,
@@ -276,38 +359,66 @@ def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = Non
     >>> app_token = "MEU_APP_TOKEN"
     >>> source_id = "MEU_SOURCE_ID"
     >>> lomapy.autenticar(app_token, source_id)
-    >>> resposta = lomapy.ofertas.obter_por_loja(5632)
-    >>> # Atenção: Mostrado apenas duas ofertas, por questão de espaço
+    >>> resposta = lomapy.ofertas.obter_por_loja(5632, quantidade=2)
     >>> pprint(resposta)  # doctest: +NORMALIZE_WHITESPACE
-    {'offers': [{'category': {'id': 0,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID'},
-                 'id': '100003411',
-                 'installment': {'quantity': 2, 'value': 87.87},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Caixa De Som Swarovski Bluetooth 15 Cristais Original',
-                 'price': 175.75,
-                 'priceFrom': 175.75,
-                 'store': {'id': 5632,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Americanas.com',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'},
-                 'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100003/4/100003410P1.jpg'},
-                {'category': {'id': 6458,
-                              'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/6458?sourceId=MEU_SOURCE_ID'},
-                 'id': '100006135',
-                 'installment': {'quantity': 7, 'value': 145.7},
-                 'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                 'name': 'Caixa Amplificada Frahm Mf800 - Usb - Bt - Controle '
-                         'Remoto',
-                 'price': 1019.9,
-                 'priceFrom': 1019.9,
-                 'store': {'id': 5632,
-                           'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
-                           'name': 'Americanas.com',
-                           'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'},
-                 'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100006/1/100006134P1.jpg'}],
-     'pagination': {'page': 1, 'size': 12, 'totalPage': 15411, 'totalSize': 184930},
-     'requestInfo': {'generatedDate': None, 'message': 'SUCCESS', 'status': 'OK'}}
+    {
+        'ofertas': [
+            {
+                'categoria': {
+                    'id': 0,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/0?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '100003411',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 5632,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Americanas.com',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'
+                },
+                'nome': 'Caixa De Som Swarovski Bluetooth 15 Cristais Original',
+                'parcelas': {'quantidade': 2, 'valor': 87.87},
+                'preco_atual': 175.75,
+                'preco_original': 175.75,
+                'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100003/4/100003410P1.jpg'
+            },
+            {
+                'categoria': {
+                    'id': 6458,
+                    'link': 'http://api.lomadee.com/v3/MEU_APP_TOKEN/category/_id/6458?sourceId=MEU_SOURCE_ID',
+                    'nome': None,
+                    'quantidade_ofertas': None
+                },
+                'id': '100006135',
+                'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                'loja': {
+                    'comissao_maxima': None,
+                    'eventos': [],
+                    'id': 5632,
+                    'link': 'https://developer.lomadee.com/redir/validation/?sourceId=MEU_SOURCE_ID&appToken=MEU_APP_TOKEN',
+                    'nome': 'Americanas.com',
+                    'quantidade_ofertas': None,
+                    'thumbnail': 'https://www.lomadee.com/programas/BR/5632/imagemBox_80x60.png'
+                },
+                'nome': 'Caixa Amplificada Frahm Mf800 - Usb - Bt - Controle Remoto',
+                'parcelas': {'quantidade': 7, 'valor': 145.7},
+                'preco_atual': 1019.9,
+                'preco_original': 1019.9,
+                'thumbnail': 'https://images-americanas.b2w.io/produtos/01/00/images/100006/1/100006134P1.jpg'
+            }
+        ],
+        'paginacao': {
+            'pagina': 1,
+            'quantidade': 2,
+            'total_paginas': 92465,
+            'total_quantidade': 184930
+        }
+    }
     """
     parametros = {}
 
@@ -325,4 +436,5 @@ def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = Non
 
     endpoint = rotas_oferta.OBTER_POR_LOJA.format(loja_id)
 
-    return manipulador_requisicoes.get(endpoint, parametros)
+    resposta = manipulador_requisicoes.get(endpoint, parametros)
+    return padronizar_resposta_oferta(resposta)
