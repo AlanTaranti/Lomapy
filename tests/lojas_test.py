@@ -15,8 +15,8 @@ lomapy.autenticar(app_token, source_id)
 
 def validacao_padrao(resposta):
     assert type(resposta) is dict
-    assert resposta["requestInfo"]["status"] == "OK"
-    assert type(resposta["stores"]) is list
+    assert type(resposta["lojas"]) is list
+    assert len(resposta["lojas"]) == resposta["paginacao"]["quantidade"]
 
 
 def test_obter_todas():
