@@ -6,6 +6,7 @@ from json import JSONDecodeError
 
 import requests
 from lomapy.recursos.sdk import sdk
+from lomapy.excecoes import RespostaVaziaException
 
 # URLs de Produção e Caixa de Areia
 CAIXA_DE_AREIA = 'http://sandbox-api.lomadee.com/v3/'
@@ -107,7 +108,10 @@ def erro(resposta: requests.Response):
     except JSONDecodeError:
         pass
 
-    raise Exception(dados)
+    if dados["codigo"] == 404:
+        raise RespostaVaziaException()
+    else:
+        raise Exception(dados)
 
 
 def cabecalhos() -> dict:
