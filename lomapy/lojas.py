@@ -7,13 +7,11 @@ from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_loja
 
 
-def obter_todas(categoria_id: int = None, possui_oferta: bool = None) -> dict:
+def obter_todas(possui_oferta: bool = None) -> dict:
     """Lista os parceiros e lojistas da Lomadee
 
     Parameters
     ----------
-    categoria_id: int, optional
-        ID de categoria. Utilize esse parâmetro para filtrar lojas que possuem ofertas de uma determinada categoria
 
     possui_oferta: bool, optional
         Quando "true" retorna apenas lojas que possuem ofertas.
@@ -82,9 +80,6 @@ def obter_todas(categoria_id: int = None, possui_oferta: bool = None) -> dict:
     }
     """
     parametros = {}
-
-    if categoria_id is not None:
-        parametros["categoryId"] = categoria_id
 
     if possui_oferta:
         parametros["hasOffer"] = possui_oferta
