@@ -43,3 +43,10 @@ def test_obter_por_id():
     resposta = lomapy.categorias.obter_por_id(categoria["id"])
 
     validar_resposta(resposta)
+
+
+def test_obter_por_id_inexistente():
+    resposta = lomapy.categorias.obter_por_id(999999999)
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0
