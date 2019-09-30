@@ -12,6 +12,15 @@ def _padronizar_paginacao(paginacao_nao_padronizada):
     }
 
 
+def _padronizar_paginacao_vazia():
+    return {
+        "pagina": 1,
+        "quantidade": 0,
+        "total_paginas": 1,
+        "total_quantidade": 0
+    }
+
+
 def _padronizar_categoria(categoria_nao_padronizada) -> dict:
     categoria = Categoria()
     categoria.construir(categoria_nao_padronizada)
