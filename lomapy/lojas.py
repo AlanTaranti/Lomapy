@@ -2,7 +2,8 @@
 .. module:: Lojas
    :synopsis: Interage com as lojas do Lomadee.
 """
-from lomapy.helpers.padronizar_resposta import padronizar_resposta_loja
+from lomapy.excecoes import RespostaVaziaException
+from lomapy.helpers.padronizar_resposta import padronizar_resposta_loja, padronizar_resposta_loja_vazia
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_loja
 
@@ -12,7 +13,6 @@ def obter_todas(possui_oferta: bool = None) -> dict:
 
     Parameters
     ----------
-
     possui_oferta: bool, optional
         Quando "true" retorna apenas lojas que possuem ofertas.
 
@@ -86,5 +86,8 @@ def obter_todas(possui_oferta: bool = None) -> dict:
 
     endpoint = rotas_loja.OBTER_TODAS
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_loja(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_loja(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_loja_vazia()
