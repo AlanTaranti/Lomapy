@@ -67,6 +67,13 @@ def padronizar_resposta_categoria(resposta) -> dict:
     }
 
 
+def padronizar_resposta_categoria_vazia() -> dict:
+    return {
+        "categorias": [],
+        "paginacao": _padronizar_paginacao_vazia()
+    }
+
+
 def padronizar_resposta_loja(resposta) -> dict:
     return {
         "lojas": _padronizar_lojas(resposta["stores"]),
