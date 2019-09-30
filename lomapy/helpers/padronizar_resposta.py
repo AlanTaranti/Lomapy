@@ -93,3 +93,10 @@ def padronizar_resposta_oferta(resposta) -> dict:
         "ofertas": _padronizar_ofertas(resposta["offers"]),
         "paginacao": _padronizar_paginacao(resposta["pagination"])
     }
+
+
+def padronizar_resposta_oferta_vazia() -> dict:
+    return {
+        "ofertas": [],
+        "paginacao": _padronizar_paginacao_vazia()
+    }
