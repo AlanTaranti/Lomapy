@@ -12,6 +12,15 @@ def _padronizar_paginacao(paginacao_nao_padronizada):
     }
 
 
+def _padronizar_paginacao_vazia():
+    return {
+        "pagina": 1,
+        "quantidade": 0,
+        "total_paginas": 1,
+        "total_quantidade": 0
+    }
+
+
 def _padronizar_categoria(categoria_nao_padronizada) -> dict:
     categoria = Categoria()
     categoria.construir(categoria_nao_padronizada)
@@ -58,6 +67,13 @@ def padronizar_resposta_categoria(resposta) -> dict:
     }
 
 
+def padronizar_resposta_categoria_vazia() -> dict:
+    return {
+        "categorias": [],
+        "paginacao": _padronizar_paginacao_vazia()
+    }
+
+
 def padronizar_resposta_loja(resposta) -> dict:
     return {
         "lojas": _padronizar_lojas(resposta["stores"]),
@@ -65,8 +81,22 @@ def padronizar_resposta_loja(resposta) -> dict:
     }
 
 
+def padronizar_resposta_loja_vazia() -> dict:
+    return {
+        "lojas": [],
+        "paginacao": _padronizar_paginacao_vazia()
+    }
+
+
 def padronizar_resposta_oferta(resposta) -> dict:
     return {
         "ofertas": _padronizar_ofertas(resposta["offers"]),
         "paginacao": _padronizar_paginacao(resposta["pagination"])
+    }
+
+
+def padronizar_resposta_oferta_vazia() -> dict:
+    return {
+        "ofertas": [],
+        "paginacao": _padronizar_paginacao_vazia()
     }

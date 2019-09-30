@@ -28,11 +28,27 @@ def test_buscar():
     validar_resposta(resposta)
 
 
+def test_busca_inexistente():
+    categoria = lomapy.categorias.obter_todas()["categorias"][0]
+
+    resposta = lomapy.ofertas.buscar(palavra_chave="asdadads", categoria_id=categoria["id"])
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0
+
+
 def test_obter_por_categoria():
     categoria = lomapy.categorias.obter_todas()["categorias"][0]
     resposta = lomapy.ofertas.obter_por_categoria(categoria["id"])
 
     validar_resposta(resposta)
+
+
+def test_obter_por_categoria_inexistente():
+    resposta = lomapy.ofertas.obter_por_categoria(99999999)
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0
 
 
 def test_obter_por_id():
@@ -41,7 +57,21 @@ def test_obter_por_id():
     validar_resposta(resposta)
 
 
+def test_obter_por_id_inexistente():
+    resposta = lomapy.ofertas.obter_por_id(99999999, 5632)
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0
+
+
 def test_obter_por_loja():
     resposta = lomapy.ofertas.obter_por_loja(5632)
 
     validar_resposta(resposta)
+
+
+def test_obter_por_loja_inexistente():
+    resposta = lomapy.ofertas.obter_por_loja(99999999)
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0

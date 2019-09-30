@@ -2,7 +2,9 @@
 .. module:: Categorias
    :synopsis: Interage com as categorias do Lomadee.
 """
+from lomapy.excecoes import RespostaVaziaException
 from lomapy.helpers import padronizar_resposta_categoria
+from lomapy.helpers.padronizar_resposta import padronizar_resposta_categoria_vazia
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_categoria
 
@@ -76,18 +78,18 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
 
     endpoint = rotas_categoria.BUSCAR
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_categoria(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_categoria(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_categoria_vazia()
 
 
-def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
+def obter_todas(possui_oferta: bool = None) -> dict:
     """Consulta a lista de todas as categorias que possuem ofertas dos lojistas parceiros da Lomadee.
 
     Parameters
     ----------
-    loja_id: int, optional
-        ID de loja. Utilize esse parâmetro para filtrar categorias que possuem ofertas de uma determinada loja
-
     possui_oferta: bool, optional
         Quando "true" retorna apenas categorias que possuem ofertas.
 
@@ -131,16 +133,16 @@ def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
     """
     parametros = {}
 
-    if loja_id is not None:
-        parametros["storeId"] = loja_id
-
     if possui_oferta is not None:
         parametros["hasOffer"] = possui_oferta
 
     endpoint = rotas_categoria.OBTER_TODAS
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_categoria(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_categoria(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_categoria_vazia()
 
 
 def obter_por_id(categoria_id: int, loja_id: int = None) -> dict:
@@ -193,5 +195,8 @@ def obter_por_id(categoria_id: int, loja_id: int = None) -> dict:
 
     endpoint = rotas_categoria.OBTER_POR_ID.format(categoria_id)
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_categoria(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_categoria(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_categoria_vazia()

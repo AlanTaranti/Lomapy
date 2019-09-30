@@ -25,6 +25,13 @@ def test_buscar():
     validar_resposta(resposta)
 
 
+def test_buscar_inexistente():
+    resposta = lomapy.categorias.buscar("qwertyuiop")
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0
+
+
 def test_obter_todas():
     resposta = lomapy.categorias.obter_todas()
 
@@ -36,3 +43,10 @@ def test_obter_por_id():
     resposta = lomapy.categorias.obter_por_id(categoria["id"])
 
     validar_resposta(resposta)
+
+
+def test_obter_por_id_inexistente():
+    resposta = lomapy.categorias.obter_por_id(999999999)
+
+    validar_resposta(resposta)
+    assert resposta["paginacao"]["quantidade"] == 0

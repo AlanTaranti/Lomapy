@@ -2,7 +2,8 @@
 .. module:: Ofertas
    :synopsis: Interage com as ofertas do Lomadee.
 """
-from lomapy.helpers.padronizar_resposta import padronizar_resposta_oferta
+from lomapy.excecoes import RespostaVaziaException
+from lomapy.helpers.padronizar_resposta import padronizar_resposta_oferta, padronizar_resposta_oferta_vazia
 from lomapy.recursos import manipulador_requisicoes
 from lomapy.recursos.rotas import rotas_oferta
 
@@ -119,8 +120,11 @@ def obter_por_categoria(categoria_id: int, loja_id: int = None, quantidade: int 
 
     endpoint = rotas_oferta.OBTER_POR_CATEGORIA.format(categoria_id)
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_oferta(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_oferta(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_oferta_vazia()
 
 
 def obter_por_id(oferta_id: int, loja_id: int) -> dict:
@@ -190,8 +194,11 @@ def obter_por_id(oferta_id: int, loja_id: int) -> dict:
 
     endpoint = rotas_oferta.OBTER_POR_ID.format(oferta_id)
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_oferta(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_oferta(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_oferta_vazia()
 
 
 def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, quantidade: int = None,
@@ -322,8 +329,11 @@ def buscar(palavra_chave: str, categoria_id: int = None, loja_id: int = None, qu
 
     endpoint = rotas_oferta.BUSCAR
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_oferta(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_oferta(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_oferta_vazia()
 
 
 def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = None, pagina: int = None,
@@ -436,5 +446,8 @@ def obter_por_loja(loja_id: int, categoria_id: int = None, quantidade: int = Non
 
     endpoint = rotas_oferta.OBTER_POR_LOJA.format(loja_id)
 
-    resposta = manipulador_requisicoes.get(endpoint, parametros)
-    return padronizar_resposta_oferta(resposta)
+    try:
+        resposta = manipulador_requisicoes.get(endpoint, parametros)
+        return padronizar_resposta_oferta(resposta)
+    except RespostaVaziaException:
+        return padronizar_resposta_oferta_vazia()
