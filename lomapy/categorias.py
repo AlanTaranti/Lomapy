@@ -80,13 +80,11 @@ def buscar(palavra_chave: str, loja_id: int = None, possui_oferta: bool = None, 
     return padronizar_resposta_categoria(resposta)
 
 
-def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
+def obter_todas(possui_oferta: bool = None) -> dict:
     """Consulta a lista de todas as categorias que possuem ofertas dos lojistas parceiros da Lomadee.
 
     Parameters
     ----------
-    loja_id: int, optional
-        ID de loja. Utilize esse parâmetro para filtrar categorias que possuem ofertas de uma determinada loja
 
     possui_oferta: bool, optional
         Quando "true" retorna apenas categorias que possuem ofertas.
@@ -130,9 +128,6 @@ def obter_todas(loja_id: int = None, possui_oferta: bool = None) -> dict:
     }
     """
     parametros = {}
-
-    if loja_id is not None:
-        parametros["storeId"] = loja_id
 
     if possui_oferta is not None:
         parametros["hasOffer"] = possui_oferta
