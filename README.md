@@ -5,6 +5,7 @@
 [![License](https://img.shields.io/github/license/AlanTaranti/Lomapy)](LICENSE)
 [![Documentação](https://readthedocs.org/projects/lomapy/badge/?version=latest)](https://lomapy.readthedocs.io/en/latest/?badge=latest)
 [![Build](https://travis-ci.org/AlanTaranti/Lomapy.svg?branch=master)](https://travis-ci.org/AlanTaranti/Lomapy)
+[![Coverage Status](https://coveralls.io/repos/github/AlanTaranti/Lomapy/badge.svg?branch=master)](https://coveralls.io/github/AlanTaranti/Lomapy?branch=master)
 
 ## O que é esse o projeto?
 
