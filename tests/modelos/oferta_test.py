@@ -44,6 +44,25 @@ def test_construcao():
     assert oferta.loja.id == oferta_original["store"]["id"]
 
 
+def test_construcao_parcela_faltando():
+    oferta_original = obter_oferta_original()
+    oferta_original.pop('installment')
+
+    oferta = Oferta()
+    oferta.construir(oferta_original)
+
+    print(oferta.para_dict())
+
+    assert oferta.id == oferta_original["id"]
+    assert oferta.nome == oferta_original["name"]
+    assert oferta.link == oferta_original["link"]
+    assert oferta.preco_atual == oferta_original["price"]
+    assert oferta.preco_original == oferta_original["priceFrom"]
+    assert oferta.thumbnail == oferta_original["thumbnail"]
+    assert oferta.categoria.id == oferta_original["category"]["id"]
+    assert oferta.loja.id == oferta_original["store"]["id"]
+
+
 def test_para_dicionario():
     oferta_original = obter_oferta_original()
 
