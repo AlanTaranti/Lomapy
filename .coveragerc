@@ -1,0 +1,6 @@
+[run]
+include =
+    lomapy/*
+omit =
+    lomapy/__init__.py
+    lomapy/**/__init__.py
