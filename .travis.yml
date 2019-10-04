@@ -18,3 +18,5 @@ deploy:
   on:
     branch: master
     python: "pypy3"
+after_success:
+  - coveralls
