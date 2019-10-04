@@ -5,3 +5,4 @@ python-dotenv
 sphinx
 sphinx-rtd-theme
 coverage
+coveralls
