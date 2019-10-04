@@ -4,4 +4,3 @@ tox
 python-dotenv
 sphinx
 sphinx-rtd-theme
-twine
