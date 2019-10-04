@@ -33,8 +33,9 @@ class Oferta:
         self.id = oferta["id"]
         self.nome = oferta["name"]
         self.parcelas = dict()
-        self.parcelas["quantidade"] = oferta["installment"].get("quantity", 1)
-        self.parcelas["valor"] = oferta["installment"].get("value", oferta["price"])
+        if oferta.get("installment", False):
+            self.parcelas["quantidade"] = oferta["installment"].get("quantity", 1)
+            self.parcelas["valor"] = oferta["installment"].get("value", oferta["price"])
         self.link = oferta["link"]
         self.preco_atual = oferta["price"]
         self.preco_original = oferta["priceFrom"]
