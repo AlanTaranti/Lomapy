@@ -38,7 +38,7 @@ class Oferta:
             self.parcelas["valor"] = oferta["installment"].get("value", oferta["price"])
         self.link = oferta["link"]
         self.preco_atual = oferta["price"]
-        self.preco_original = oferta["priceFrom"]
+        self.preco_original = oferta.get("priceFrom", None)
         self.thumbnail = oferta["thumbnail"]
 
         categoria = Categoria()
