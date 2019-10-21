@@ -1,0 +1,5 @@
+__version__ = "0.4.4"
+__author__ = "Alan Taranti"
+__maintainer__ = "Alan Tarant"
+__email__ = "alan.taranti@gmail.com"
+__license__ = "MIT"
