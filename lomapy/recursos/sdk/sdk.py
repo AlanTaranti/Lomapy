@@ -1,1 +1,3 @@
-VERSAO = '0.4.4'
+from lomapy.metadados import __version__
+
+VERSAO = __version__
