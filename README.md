@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/github/license/AlanTaranti/Lomapy)](LICENSE)
 [![Documentação](https://readthedocs.org/projects/lomapy/badge/?version=latest)](https://lomapy.readthedocs.io/en/latest/?badge=latest)
 [![Build](https://travis-ci.org/AlanTaranti/Lomapy.svg?branch=master)](https://travis-ci.org/AlanTaranti/Lomapy)
+![Maintenance](https://img.shields.io/maintenance/no/2019)
 
 
 ## O que é esse o projeto?
