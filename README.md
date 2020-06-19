@@ -31,14 +31,16 @@ Segue um exemplo de como utilizar essa biblioteca.
 
 *Não possui um APP_TOKEN ou SOURCE_ID? Consulte a documentação da [Lomadee](https://developer.lomadee.com/).*
 
-    import lomapy
-    
-    app_token = {SEU_APP_TOKEN_AQUI}
-    source_id = {SEU_SOURCE_ID_AQUI}
-    
-    lomapy.autenticar(app_token, source_id)
-    
-    lomapy.categorias.obter_todas()
+```python
+import lomapy
+
+app_token = {SEU_APP_TOKEN_AQUI}
+source_id = {SEU_SOURCE_ID_AQUI}
+
+lomapy.autenticar(app_token, source_id)
+
+lomapy.categorias.obter_todas()
+```
 
 ### Documentação
 
